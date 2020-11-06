@@ -3,6 +3,7 @@ package cyker.app.webservices.service.Impl;
 import cyker.app.webservices.io.entity.UserEntity;
 import cyker.app.webservices.repository.UserRepository;
 import cyker.app.webservices.service.UserService;
+import cyker.app.webservices.shared.Utils;
 import cyker.app.webservices.shared.dto.UserDto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,11 @@ public class UserServiceImpl implements UserService {
 
 
     UserRepository userRepository;
+    Utils utils;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, Utils utils) {
         this.userRepository = userRepository;
+        this.utils = utils;
     }
 
     @Override
@@ -25,8 +28,11 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(user, userEntity);
 
+        String publicUserId = utils.generateUserId(30);
+
+        userEntity.setUserId(publicUserId);
         userEntity.setEncryptedPassword("test");
-        userEntity.setUserId("testUserId");
+
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
 

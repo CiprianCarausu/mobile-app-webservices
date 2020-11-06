@@ -9,8 +9,7 @@ import java.util.Random;
 public class Utils {
     private final Random RANDOM = new SecureRandom();
     private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPRSTUVXZabcdefghijklmnoprqrstuvwxyz";
-    private final int ITERATIONS = 10000;
-    private final int KEY_LENGTH = 256;
+
 
     public String generateUserId(int length) {
         return generateRandomString(length);
@@ -23,7 +22,6 @@ public class Utils {
             returnValue.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
         }
         return new String(returnValue);
-
     }
 }
 

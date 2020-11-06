@@ -1,6 +1,7 @@
 package cyker.app.webservices.ui.controller;
 
 import cyker.app.webservices.ui.model.request.UserDetailsRequestModel;
+import cyker.app.webservices.ui.model.response.UserRest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,8 +14,8 @@ public class UserController {
     }
 
     @PostMapping
-    public String createUser(@RequestBody UserDetailsRequestModel userDetails){
-        return "create user was called";
+    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails){
+        return null;
     }
 
     @PutMapping

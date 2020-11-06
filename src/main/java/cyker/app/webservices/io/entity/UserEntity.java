@@ -3,12 +3,12 @@ package cyker.app.webservices.io.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
+@Entity(name="users")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = -8893241343385928625L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
 
     @Column(nullable=false)

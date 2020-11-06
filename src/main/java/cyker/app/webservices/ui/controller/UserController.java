@@ -3,14 +3,16 @@ package cyker.app.webservices.ui.controller;
 import cyker.app.webservices.shared.dto.UserDto;
 import cyker.app.webservices.ui.model.request.UserDetailsRequestModel;
 import cyker.app.webservices.ui.model.response.UserRest;
-import org.apache.catalina.User;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("users")
 public class UserController {
 
+    @Autowired
+    private final UserService userService;
 
 
     @GetMapping

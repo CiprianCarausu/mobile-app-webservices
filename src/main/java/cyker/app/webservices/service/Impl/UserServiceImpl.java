@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-
     UserRepository userRepository;
     Utils utils;
 
@@ -32,7 +31,6 @@ public class UserServiceImpl implements UserService {
 
         userEntity.setUserId(publicUserId);
         userEntity.setEncryptedPassword("test");
-
 
         UserEntity storedUserDetails = userRepository.save(userEntity);
 

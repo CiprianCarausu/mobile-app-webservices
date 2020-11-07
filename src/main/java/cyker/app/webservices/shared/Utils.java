@@ -1,7 +1,6 @@
 package cyker.app.webservices.shared;
 
 import org.springframework.stereotype.Component;
-
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -9,7 +8,6 @@ import java.util.Random;
 public class Utils {
     private final Random RANDOM = new SecureRandom();
     private final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPRSTUVXZabcdefghijklmnoprqrstuvwxyz";
-
 
     public String generateUserId(int length) {
         return generateRandomString(length);

@@ -3,6 +3,7 @@ package cyker.app.webservices.ui.controller;
 import cyker.app.webservices.service.UserService;
 import cyker.app.webservices.shared.dto.UserDto;
 import cyker.app.webservices.ui.model.request.UserDetailsRequestModel;
+import cyker.app.webservices.ui.model.response.ErrorMessages;
 import cyker.app.webservices.ui.model.response.UserRest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
@@ -32,8 +33,10 @@ public class UserController {
 
     @PostMapping(consumes =  {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE},
                  produces =  {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
+    public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception {
         UserRest returnValue = new UserRest();
+
+        if(userDetails.getFirstName().isEmpty()) throw new Exception(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
 
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(userDetails, userDto);

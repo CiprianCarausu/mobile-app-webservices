@@ -1,5 +1,6 @@
 package cyker.app.webservices.ui.controller;
 
+import cyker.app.webservices.exceptions.UserServiceException;
 import cyker.app.webservices.service.UserService;
 import cyker.app.webservices.shared.dto.UserDto;
 import cyker.app.webservices.ui.model.request.UserDetailsRequestModel;
@@ -36,7 +37,7 @@ public class UserController {
     public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception {
         UserRest returnValue = new UserRest();
 
-        if(userDetails.getFirstName().isEmpty()) throw new Exception(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
+        if(userDetails.getFirstName().isEmpty()) throw new UserServiceException(ErrorMessages.MISSING_REQUIRED_FIELD.getErrorMessage());
 
         UserDto userDto = new UserDto();
         BeanUtils.copyProperties(userDetails, userDto);

@@ -1,10 +1,12 @@
 package cyker.app.webservices.service.Impl;
 
+import cyker.app.webservices.exceptions.UserServiceException;
 import cyker.app.webservices.io.entity.UserEntity;
 import cyker.app.webservices.repository.UserRepository;
 import cyker.app.webservices.service.UserService;
 import cyker.app.webservices.shared.Utils;
 import cyker.app.webservices.shared.dto.UserDto;
+import cyker.app.webservices.ui.model.response.ErrorMessages;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -68,6 +70,24 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = userRepository.findByUserId(userId);
         if (userEntity == null) throw new UsernameNotFoundException(userId);
         BeanUtils.copyProperties(userEntity, returnValue);
+
+        return returnValue;
+    }
+
+    @Override
+    public UserDto updateUser(String userId, UserDto userDto) {
+        UserDto returnValue = new UserDto();
+
+        UserEntity userEntity = userRepository.findByUserId(userId);
+
+        if (userEntity == null) throw new UserServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
+
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
+
+        UserEntity updatedUserDetails = userRepository.save(userEntity);
+
+        BeanUtils.copyProperties(updatedUserDetails,returnValue);
 
         return returnValue;
     }

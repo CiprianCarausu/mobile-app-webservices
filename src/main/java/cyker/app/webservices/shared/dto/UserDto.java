@@ -1,6 +1,9 @@
 package cyker.app.webservices.shared.dto;
 
+import cyker.app.webservices.ui.model.request.AdressResquestModel;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class UserDto implements Serializable {
 
@@ -14,7 +17,19 @@ public class UserDto implements Serializable {
     private String encryptedPassword;
     private String emailVerificationToken;
     private Boolean emailVerificationStatus = false;
+    private List<AdressResquestModel> adresses;
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public List<AdressResquestModel> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(List<AdressResquestModel> adresses) {
+        this.adresses = adresses;
+    }
 
     public String getUserId() {
         return userId;

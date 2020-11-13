@@ -1,12 +1,23 @@
 package cyker.app.webservices.ui.model.request;
 
 
+import java.util.List;
+
 public class UserDetailsRequestModel {
 
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private List<AdressResquestModel> adresses;
+
+    public List<AdressResquestModel> getAdresses() {
+        return adresses;
+    }
+
+    public void setAdresses(List<AdressResquestModel> adresses) {
+        this.adresses = adresses;
+    }
 
     public String getFirstName() {
         return firstName;

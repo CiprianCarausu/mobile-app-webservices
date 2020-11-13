@@ -17,26 +17,10 @@ public class UserDto implements Serializable {
     private String encryptedPassword;
     private String emailVerificationToken;
     private Boolean emailVerificationStatus = false;
-    private List<AdressResquestModel> adresses;
+    private List<AdressDto> addresses;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
-    }
-
-    public List<AdressResquestModel> getAdresses() {
-        return adresses;
-    }
-
-    public void setAdresses(List<AdressResquestModel> adresses) {
-        this.adresses = adresses;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public long getId() {
@@ -45,6 +29,14 @@ public class UserDto implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -102,4 +94,13 @@ public class UserDto implements Serializable {
     public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
         this.emailVerificationStatus = emailVerificationStatus;
     }
+
+    public List<AdressDto> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<AdressDto> addresses) {
+        this.addresses = addresses;
+    }
 }
+
